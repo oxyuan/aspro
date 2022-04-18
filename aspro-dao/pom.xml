@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>aspro-service</artifactId>
+    <artifactId>aspro-dao</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>org.atbyuan.aspro</groupId>
-            <artifactId>aspro-dao</artifactId>
+            <artifactId>aspro-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

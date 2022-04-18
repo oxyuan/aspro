@@ -13,6 +13,7 @@
         <module>aspro-common</module>
         <module>aspro-service</module>
         <module>aspro-starter</module>
+        <module>aspro-dao</module>
     </modules>
 
     <properties>
