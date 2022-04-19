@@ -5,36 +5,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 内容记录表
- *
  * @author atbyuan
- * @since 2022-04-18 12:38
+ * @since 2022/4/18 23:11
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MsgRecord implements Serializable {
+public class MsgConfig implements Serializable {
 
     /** 主键ID */
     private Integer id;
-    /** 配置id */
-    private Integer configId;
-    /** 消息标题 */
-    private String title;
-    /** 消息内容 */
+    /** 配置信息 */
     private String content;
-    /** 用户ID */
-    private String uid;
-    /** 姓名 */
-    private String nickname;
-    /** 透传字段 */
-    private String msgStr;
 
     /** 版本号 */
     private Integer revision;
@@ -48,4 +35,5 @@ public class MsgRecord implements Serializable {
     private String updater;
 
     private static final long serialVersionUID = 1L;
+
 }
