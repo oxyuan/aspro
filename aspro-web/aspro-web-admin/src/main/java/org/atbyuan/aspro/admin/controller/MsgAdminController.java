@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @author atbyuan
@@ -45,6 +46,11 @@ public class MsgAdminController {
     @GetMapping("/config/query")
     public ApiResponse<MsgConfig> configQuery(@RequestParam("configId") Integer configId) {
         return ApiResponse.success(msgConfigMapper.selectById(configId));
+    }
+
+    @GetMapping("/date")
+    public ApiResponse<String> dateFormat(@RequestParam("date") Date date) {
+        return ApiResponse.success(date.toString());
     }
 
     /**

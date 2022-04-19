@@ -45,7 +45,11 @@
 <!--            <groupId>javax.validation</groupId>-->
 <!--            <artifactId>validation-api</artifactId>-->
 <!--        </dependency>-->
-
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
         <!--lombok-->
         <dependency>

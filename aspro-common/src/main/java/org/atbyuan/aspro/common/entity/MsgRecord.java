@@ -1,11 +1,16 @@
 package org.atbyuan.aspro.common.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,6 +20,7 @@ import java.util.Date;
  * @author atbyuan
  * @since 2022-04-18 12:38
  */
+// @Table(name = "msg_record")
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,6 +28,7 @@ import java.util.Date;
 public class MsgRecord implements Serializable {
 
     /** 主键ID */
+    @TableId(value = "id",type= IdType.AUTO)
     private Integer id;
     /** 配置id */
     private Integer configId;

@@ -1,5 +1,7 @@
 package org.atbyuan.aspro.common.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +21,7 @@ import java.util.Date;
 public class MsgConfig implements Serializable {
 
     /** 主键ID */
+    @TableId(value = "id",type= IdType.AUTO)
     private Integer id;
     /** 配置信息 */
     private String content;
