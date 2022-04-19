@@ -26,7 +26,7 @@ public class ApiResponse<T> {
     private static final String SUCCESS_MSG = AsproEnums.SystemCode.SYSTEM_SUCCESS.getMessage();
     private static final String ERROR_MSG = AsproEnums.SystemCode.SYSTEM_ERROR.getMessage();
 
-    public final ApiResponse<T> SUCCESS = ApiResponse.<T>builder().code(SUCCESS_CODE).message(SUCCESS_MSG).build();
+    public static final ApiResponse<Void> SUCCESS = ApiResponse.<Void>builder().code(SUCCESS_CODE).message(SUCCESS_MSG).build();
 
     public static <T> ApiResponse<T> success(T data) {
         return ApiResponse.<T>builder()
