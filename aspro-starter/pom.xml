@@ -12,9 +12,7 @@
     <artifactId>aspro-starter</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>aspro-starter-admin</module>
-        <module>aspro-starter-api</module>
-        <module>aspro-starter-gateway</module>
+        <module>aspro-starter-db</module>
     </modules>
 
     <properties>
@@ -22,5 +20,9 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <dependencies>
+
+
+    </dependencies>
 
 </project>
