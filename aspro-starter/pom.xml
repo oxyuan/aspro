@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>aspro-starter-db</module>
+        <module>aspro-starter-config</module>
     </modules>
 
     <properties>

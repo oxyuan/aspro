@@ -1,4 +1,4 @@
-package org.atbyuan.aspro.admin.config;
+package org.atbyuan.aspro.config.webmvc;
 
 import cn.hutool.core.date.DateUtil;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ import java.util.function.Function;
 
 /**
  * @author atbyuan
- * @since 2022/4/18 22:40
+ * @since 2022/4/19 23:02
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {

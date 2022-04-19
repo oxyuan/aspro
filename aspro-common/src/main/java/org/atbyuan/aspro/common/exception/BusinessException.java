@@ -2,6 +2,8 @@ package org.atbyuan.aspro.common.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.atbyuan.aspro.common.enums.AsproEnums;
+
 
 /**
  * @author atbyuan
@@ -20,11 +22,8 @@ public class BusinessException extends RuntimeException {
         this.message = message;
     }
 
-    public BusinessException(int code) {
-        this.code = code;
-    }
-
     public BusinessException(String message) {
+        this.code = AsproEnums.SystemCode.SYSTEM_ERROR.getCode();
         this.message = message;
     }
 }

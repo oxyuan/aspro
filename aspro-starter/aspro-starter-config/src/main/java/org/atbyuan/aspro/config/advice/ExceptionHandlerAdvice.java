@@ -1,4 +1,4 @@
-package org.atbyuan.aspro.service.engine.config;
+package org.atbyuan.aspro.config.advice;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.security.auth.message.AuthException;
 import javax.servlet.ServletException;
-        
+
 /**
  * @author atbyuan
  * @since 2022/4/19 12:31
@@ -39,32 +39,54 @@ public class ExceptionHandlerAdvice {
         //     return ApiResponse.builder().code(feignRemoteException.status())
         //             .message(feignRemoteException.getMessage()).data(className).build();
         // }
-        return ApiResponse.builder().code(SystemCode.SYSTEM_ERROR.getCode())
-                .message(SystemCode.SYSTEM_ERROR.getMessage()).data(className).build();
+        return ApiResponse.builder()
+                .code(SystemCode.SYSTEM_ERROR.getCode())
+                .message(SystemCode.SYSTEM_ERROR.getMessage())
+                .data(className)
+                .build();
+    }
+
+    @ExceptionHandler(value = BusinessException.class)
+    public ApiResponse<?> handleBusinessException(BusinessException ex) {
+        String className = ex.getClass().getName();
+        log.error("Exception occurred! ex: {}, stack:{}", className, ExceptionUtils.getStackTrace(ex));
+        return ApiResponse.builder()
+                .code(ex.getCode())
+                .message(ex.getMessage())
+                .build();
     }
 
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public ApiResponse<?> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
         String className = ex.getClass().getName();
         log.error("Exception occurred! ex: {}, stack:{}", className, ExceptionUtils.getStackTrace(ex));
-        return ApiResponse.builder().code(SystemCode.SYSTEM_REQUEST_PARAM_NO_FOUND.getCode())
-                .message(SystemCode.SYSTEM_REQUEST_PARAM_NO_FOUND.getMessage()).data(className).build();
+        return ApiResponse.builder()
+                .code(SystemCode.SYSTEM_REQUEST_PARAM_NO_FOUND.getCode())
+                .message(SystemCode.SYSTEM_REQUEST_PARAM_NO_FOUND.getMessage())
+                .data(className)
+                .build();
     }
 
     @ExceptionHandler(value = AuthException.class)
     public ApiResponse<?> handleAuthException(AuthException ex) {
         String className = ex.getClass().getName();
         log.error("Exception occurred! ex: {}, stack:{}", className, ExceptionUtils.getStackTrace(ex));
-        return ApiResponse.builder().code(SystemCode.SYSTEM_NO_AUTH.getCode())
-                .message(SystemCode.SYSTEM_NO_AUTH.getMessage()).data(className).build();
+        return ApiResponse.builder()
+                .code(SystemCode.SYSTEM_NO_AUTH.getCode())
+                .message(SystemCode.SYSTEM_NO_AUTH.getMessage())
+                .data(className)
+                .build();
     }
 
     @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
     public ApiResponse<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
         String className = ex.getClass().getName();
         log.error("Exception occurred! ex: {}, stack:{}", className, ExceptionUtils.getStackTrace(ex));
-        return ApiResponse.builder().code(SystemCode.SYSTEM_METHOD_ERROR.getCode())
-                .message(SystemCode.SYSTEM_METHOD_ERROR.getMessage()).data(className).build();
+        return ApiResponse.builder()
+                .code(SystemCode.SYSTEM_METHOD_ERROR.getCode())
+                .message(SystemCode.SYSTEM_METHOD_ERROR.getMessage())
+                .data(className)
+                .build();
     }
 
     @ExceptionHandler(value = ServletException.class)
@@ -73,11 +95,17 @@ public class ExceptionHandlerAdvice {
         log.error("Exception occurred! ex: {}, stack:{}", className, ExceptionUtils.getStackTrace(ex));
         if (ex instanceof NoHandlerFoundException) {
             log.error("未找到请求路径：{}", ((NoHandlerFoundException) ex).getRequestURL());
-            return ApiResponse.builder().code(SystemCode.SYSTEM_NO_FOUND.getCode())
-                    .message(SystemCode.SYSTEM_NO_FOUND.getMessage()).data(className).build();
+            return ApiResponse.builder()
+                    .code(SystemCode.SYSTEM_NO_FOUND.getCode())
+                    .message(SystemCode.SYSTEM_NO_FOUND.getMessage())
+                    .data(className)
+                    .build();
         }
-        return ApiResponse.builder().code(SystemCode.SYSTEM_ERROR.getCode())
-                .message(SystemCode.SYSTEM_ERROR.getMessage()).data(className).build();
+        return ApiResponse.builder()
+                .code(SystemCode.SYSTEM_ERROR.getCode())
+                .message(SystemCode.SYSTEM_ERROR.getMessage())
+                .data(className)
+                .build();
     }
 
     @ExceptionHandler(value = BindException.class)

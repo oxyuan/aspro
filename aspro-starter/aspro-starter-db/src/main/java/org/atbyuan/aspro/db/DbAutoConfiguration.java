@@ -1,6 +1,7 @@
-package org.atbyuan.aspro.db.config;
+package org.atbyuan.aspro.db;
 
 import lombok.extern.slf4j.Slf4j;
+import org.atbyuan.aspro.db.config.MybatisConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 

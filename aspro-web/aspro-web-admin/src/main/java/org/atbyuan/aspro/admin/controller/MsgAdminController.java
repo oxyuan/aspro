@@ -1,5 +1,7 @@
 package org.atbyuan.aspro.admin.controller;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import org.atbyuan.aspro.common.entity.MsgConfig;
 import org.atbyuan.aspro.common.entity.MsgRecord;
 import org.atbyuan.aspro.common.exception.BusinessException;
@@ -48,9 +50,11 @@ public class MsgAdminController {
         return ApiResponse.success(msgConfigMapper.selectById(configId));
     }
 
-    @GetMapping("/date")
+    @GetMapping("/dateFormat")
     public ApiResponse<String> dateFormat(@RequestParam("date") Date date) {
-        return ApiResponse.success(date.toString());
+        DateTime dateTime = DateUtil.parse(date.toString(), "yyyy-MM-dd HH:mm:ss");
+
+        return ApiResponse.success(dateTime.toString());
     }
 
     /**
