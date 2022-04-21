@@ -2,9 +2,9 @@ package org.atbyuan.aspro.admin.controller;
 
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
-import org.atbyuan.aspro.common.entity.MsgConfig;
-import org.atbyuan.aspro.common.entity.MsgRecord;
 import org.atbyuan.aspro.common.exception.BusinessException;
+import org.atbyuan.aspro.common.pojo.entity.MsgConfig;
+import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
 import org.atbyuan.aspro.common.response.ApiResponse;
 import org.atbyuan.aspro.db.mapper.MsgConfigMapper;
 import org.atbyuan.aspro.db.mapper.MsgRecordMapper;
@@ -60,14 +60,14 @@ public class MsgAdminController {
     /**
      * {"type": [1, 2, 3, 4, 5],"content": {"video": ["1.mp4", "2.mp4"],"audio": ["1.mp3", "2.mp3"],"file": ["1.pdf", "2.pdf"],"page": ["www.baidu.com", "www.taobao.com"],"ext": {"headImg": "1.jpg","nickName": "昵称"}},"msgStr": ""}
      *
-     * @param msg json字符串
+     * @param test
      * @return 处理结果
      */
-    @RequestMapping("/push")
-    public String push(@RequestParam("msg") String msg) {
+    @RequestMapping("/test")
+    public String push(@RequestParam("test") String test) {
 
-
-        return "admin index";
+        return null;
     }
+
 
 }

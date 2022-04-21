@@ -23,7 +23,7 @@
 
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <spring-cloud-nacos.version>2.2.3.RELEASE</spring-cloud-nacos.version>
+        <spring.cloud.alibaba.version>2.2.3.RELEASE</spring.cloud.alibaba.version>
 
         <velocity-engine-core.version>2.1</velocity-engine-core.version>
         <mybatis-plus-boot.verison>3.4.1</mybatis-plus-boot.verison>
@@ -73,12 +73,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- SpringCloud-alibaba -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>${spring-cloud-nacos.version}</version>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-
             <!--                        数据库相关                        -->
             <!--mybatis-plus-->
             <dependency>

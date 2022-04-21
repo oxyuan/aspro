@@ -1,0 +1,26 @@
+spring:
+
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        file-extension: yaml
+        group: aspro
+        namespace: 3bf841fe-a127-4231-870c-b31052086425
+        prefix: ${spring.application.name}
+        enableRemoteSyncConfig: true
+        username: nacos
+        password: nacos
+        server-addr: localhost:8848
+
+#        extension-configs:
+#          - data-id: aspro-web-admin-test.yaml
+#            group: aspro
+#            refresh: true
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        namespace: 3bf841fe-a127-4231-870c-b31052086425
+        group: aspro
+        username: nacos
+        password: nacos

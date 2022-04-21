@@ -5,4 +5,7 @@ spring:
   application:
     name: aspro-web-admin
   profiles:
-    active: db
+    active: test
+    include: config, db
+
+aspro.val: nacos

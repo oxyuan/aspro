@@ -1,7 +1,7 @@
 package org.atbyuan.aspro.db.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.atbyuan.aspro.common.entity.MsgRecord;
+import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
 
 /**
  * @author atbyuan
