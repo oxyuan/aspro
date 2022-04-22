@@ -1,3 +1,6 @@
+nacos:
+  server-addr: localhost:8848
+  password: password
 
 ---
 # 测试环境
@@ -5,13 +8,23 @@ spring:
   profiles: dev
   cloud:
     nacos:
+      config:
+        enabled: true
+#        file-extension: yaml
+#        group: aspro
+#        prefix: ${spring.application.name}
+        namespace: 3bf841fe-a127-4231-870c-b31052086425
+        enableRemoteSyncConfig: true
+        username: nacos
+        password: ${nacos.password}
+        server-addr: ${nacos.server-addr}
       discovery:
         enabled: true
-        server-addr: localhost:8848
+        server-addr: ${nacos.server-addr}
         namespace: 3bf841fe-a127-4231-870c-b31052086425
         group: aspro
         username: nacos
-        password: nacos
+        password: ${nacos.password}
 
 ---
 # 生产环境
@@ -19,6 +32,16 @@ spring:
   profiles: prod
   cloud:
     nacos:
+      config:
+        enabled: true
+        #        file-extension: yaml
+        #        group: aspro
+        #        prefix: ${spring.application.name}
+        namespace: 3bf841fe-a127-4231-870c-b31052086425
+        enableRemoteSyncConfig: true
+        username: nacos
+        password: nacos
+        server-addr: localhost:8848
       discovery:
         enabled: true
         server-addr: localhost:8848
