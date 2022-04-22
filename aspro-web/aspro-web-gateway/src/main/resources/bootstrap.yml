@@ -20,7 +20,8 @@ spring:
         predicates:
           - Header=application, api
 
---- # dev
+# dev profile
+---
 spring:
   cloud:
     nacos:

@@ -1,9 +1,9 @@
+# dev profile
+---
 nacos:
   server-addr: localhost:8848
   password: password
 
----
-# 测试环境
 spring:
   profiles: dev
   cloud:
@@ -26,8 +26,9 @@ spring:
         username: nacos
         password: ${nacos.password}
 
+
+# prod profile
 ---
-# 生产环境
 spring:
   profiles: prod
   cloud:
