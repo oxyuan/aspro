@@ -1,11 +1,10 @@
-package org.atbyuan.aspro.config;
+package org.atbyuan.aspro.web;
 
 import lombok.extern.slf4j.Slf4j;
-import org.atbyuan.aspro.config.advice.ExceptionHandlerAdvice;
-import org.atbyuan.aspro.config.webmvc.WebMvcConfiguration;
+import org.atbyuan.aspro.web.advice.ExceptionHandlerAdvice;
+import org.atbyuan.aspro.web.webmvc.WebMvcConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * @author atbyuan
@@ -14,6 +13,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 @Configuration
 @Import({WebMvcConfiguration.class, ExceptionHandlerAdvice.class})
-public class ConfAutoConfiguration {
+public class WebAutoConfiguration {
 
 }

@@ -1,0 +1,28 @@
+
+---
+# 测试环境
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        namespace: 3bf841fe-a127-4231-870c-b31052086425
+        group: aspro
+        username: nacos
+        password: nacos
+
+---
+# 生产环境
+spring:
+  profiles: prod
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        namespace: 3bf841fe-a127-4231-870c-b31052086425
+        group: aspro
+        username: nacos
+        password: nacos

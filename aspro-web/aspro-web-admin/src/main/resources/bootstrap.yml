@@ -1,11 +1,9 @@
 server:
-  port: 8082
+  port: 8002
 
 spring:
   application:
     name: aspro-web-admin
   profiles:
-    active: test
-    include: config, db
-
-aspro.val: nacos
+    active: dev
+    include: db, nacos

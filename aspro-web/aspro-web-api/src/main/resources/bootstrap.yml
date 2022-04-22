@@ -1,0 +1,9 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: aspro-web-api
+  profiles:
+    active: dev
+    include: web, db, nacos

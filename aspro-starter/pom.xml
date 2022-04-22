@@ -13,7 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>aspro-starter-db</module>
-        <module>aspro-starter-config</module>
+        <module>aspro-starter-web</module>
+        <module>aspro-starter-nacos</module>
     </modules>
 
     <properties>

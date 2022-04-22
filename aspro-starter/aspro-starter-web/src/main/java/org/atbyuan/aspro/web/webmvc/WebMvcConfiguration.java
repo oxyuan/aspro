@@ -1,4 +1,4 @@
-package org.atbyuan.aspro.config.webmvc;
+package org.atbyuan.aspro.web.webmvc;
 
 import cn.hutool.core.date.DateUtil;
 import org.springframework.context.annotation.Configuration;
