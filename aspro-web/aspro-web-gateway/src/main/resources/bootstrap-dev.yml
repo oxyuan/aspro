@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    nacos:
-      config:
-        extension-configs:
-          - data-id: aspro-web-gateway.yaml
-            group: aspro
-            refresh: true

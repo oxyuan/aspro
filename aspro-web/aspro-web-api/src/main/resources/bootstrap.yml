@@ -7,3 +7,16 @@ spring:
   profiles:
     active: dev
     include: web, db, nacos
+
+--- # dev
+spring:
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-web-api.yaml
+            group: aspro
+            refresh: true
+          - data-id: aspro-starter-db.yaml
+            group: aspro
+            refresh: true
