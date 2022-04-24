@@ -39,14 +39,10 @@ public class AsproRoutePredicateFactory extends AbstractRoutePredicateFactory<As
         return serverWebExchange -> {
             HttpHeaders headers = serverWebExchange.getRequest().getHeaders();
             String routeHeaderToken = headers.getFirst(ROUTE_HEADER_TOKEN);
-            if (StringUtils.isBlank(routeHeaderToken)
-                    ||
-                    !NumberUtil.isNumber(routeHeaderToken)
-                    ||
-                    AsproEnums.Gateway.of(Integer.parseInt(routeHeaderToken)) == null) {
+            if (StringUtils.isBlank(routeHeaderToken)) {
                 throw new BusinessException(SYSTEM_SERVER_ERROR);
             }
-            return config.getToken().equals(Integer.parseInt(routeHeaderToken));
+            return config.getToken().equals(routeHeaderToken);
         };
     }
 
@@ -59,6 +55,6 @@ public class AsproRoutePredicateFactory extends AbstractRoutePredicateFactory<As
     @Validated
     public static class Config {
         @NotNull
-        private Integer token;
+        private String token;
     }
 }
