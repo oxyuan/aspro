@@ -36,7 +36,6 @@ public class AsproRoutePredicateFactory extends AbstractRoutePredicateFactory<As
 
     @Override
     public Predicate<ServerWebExchange> apply(AsproRoutePredicateFactory.Config config) {
-        log.info("aspro-route-predicate.config: {}", JSON.toJSONString(config));
         return serverWebExchange -> {
             HttpHeaders headers = serverWebExchange.getRequest().getHeaders();
             String routeHeaderToken = headers.getFirst(ROUTE_HEADER_TOKEN);
@@ -50,7 +49,6 @@ public class AsproRoutePredicateFactory extends AbstractRoutePredicateFactory<As
             return config.getToken().equals(Integer.parseInt(routeHeaderToken));
         };
     }
-
 
     @Override
     public List<String> shortcutFieldOrder() {

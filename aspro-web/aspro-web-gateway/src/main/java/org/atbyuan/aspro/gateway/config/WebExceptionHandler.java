@@ -63,18 +63,7 @@ public class WebExceptionHandler extends AbstractErrorWebExceptionHandler {
             BodyInserter<ApiResponse<?>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromValue(resObject);
             return ServerResponse.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(bodyInserter);
 
-        }
-        // else if (throwable instanceof FeignRemoteException) {
-        //     FeignRemoteException feignRemoteException = (FeignRemoteException) throwable;
-        //     ResObject<?> resObject = ResObject.builder()
-        //             .code(feignRemoteException.status())
-        //             .message(feignRemoteException.getMessage())
-        //             .build();
-        //     BodyInserter<ResObject<?>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromValue(resObject);
-        //     return ServerResponse.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(bodyInserter);
-        //
-        // }
-        else {
+        } else {
             Integer status = (Integer) errorAttributes.get("status");
             AsproEnums.SystemCode systemCodeEnum = AsproEnums.SystemCode.of(status);
             ApiResponse<?> resObject = ApiResponse.builder()

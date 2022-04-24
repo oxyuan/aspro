@@ -1,0 +1,21 @@
+# dev profile
+---
+spring:
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-starter-db.yaml
+            group: aspro
+            refresh: true
+
+# prod profile
+---
+spring:
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-starter-db.yaml
+            group: aspro
+            refresh: true

@@ -18,6 +18,3 @@ spring:
           - data-id: aspro-web-admin.yaml
             group: aspro
             refresh: true
-          - data-id: aspro-starter-db.yaml
-            group: aspro
-            refresh: true
