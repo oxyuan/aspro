@@ -26,4 +26,9 @@ public class BusinessException extends RuntimeException {
         this.code = AsproEnums.SystemCode.SYSTEM_ERROR.getCode();
         this.message = message;
     }
+
+    public BusinessException(AsproEnums.SystemCode systemCode) {
+        this.code = systemCode.getCode();
+        this.message = systemCode.getMessage();
+    }
 }

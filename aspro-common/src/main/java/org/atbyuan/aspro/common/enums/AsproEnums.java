@@ -49,4 +49,24 @@ public interface AsproEnums {
         }
     }
 
+
+    @Getter
+    @AllArgsConstructor
+    enum Gateway {
+        ADMIN(1, "admin"),
+        API(2, "api"),
+        ;
+
+        private final Integer code;
+        private final String desc;
+
+        public static Gateway of(int code) {
+            for (Gateway codeEnum : values()) {
+                if (codeEnum.getCode() == code) {
+                    return codeEnum;
+                }
+            }
+            return null;
+        }
+    }
 }

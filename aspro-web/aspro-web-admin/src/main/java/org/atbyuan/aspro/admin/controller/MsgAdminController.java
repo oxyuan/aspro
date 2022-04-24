@@ -64,9 +64,9 @@ public class MsgAdminController {
      * @return 处理结果
      */
     @RequestMapping("/test")
-    public String push(@RequestParam("test") String test) {
+    public ApiResponse<Void> push(@RequestParam("test") String test) {
 
-        return null;
+        return ApiResponse.SUCCESS;
     }
 
 

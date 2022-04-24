@@ -18,7 +18,7 @@ public class AsproApiController {
 
     @GetMapping("/random")
     public ApiResponse<Integer> random() {
-        return ApiResponse.success(RandomUtil.randomInt());
+        return ApiResponse.success(RandomUtil.randomInt(10, 100));
     }
 
 }
