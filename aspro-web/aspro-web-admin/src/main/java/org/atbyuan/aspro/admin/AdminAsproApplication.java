@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication
-public class AsproAdminApplication {
+public class AdminAsproApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AsproAdminApplication.class, args);
-        log.info("=====>>> aspro-admin start success <<<=====");
+        SpringApplication.run(AdminAsproApplication.class, args);
+        log.info("=====>>> admin-aspro start success <<<=====");
     }
 
 }

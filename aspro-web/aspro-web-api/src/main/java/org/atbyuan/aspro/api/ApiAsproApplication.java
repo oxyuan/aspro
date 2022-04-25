@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication
-public class AsproApiApplication {
+public class ApiAsproApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AsproApiApplication.class, args);
-        log.info("=====>>> aspro-api start success <<<=====");
+        SpringApplication.run(ApiAsproApplication.class, args);
+        log.info("=====>>> api-aspro start success <<<=====");
     }
 
 }

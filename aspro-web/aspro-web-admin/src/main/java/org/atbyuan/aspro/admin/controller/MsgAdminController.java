@@ -60,11 +60,11 @@ public class MsgAdminController {
     /**
      * {"type": [1, 2, 3, 4, 5],"content": {"video": ["1.mp4", "2.mp4"],"audio": ["1.mp3", "2.mp3"],"file": ["1.pdf", "2.pdf"],"page": ["www.baidu.com", "www.taobao.com"],"ext": {"headImg": "1.jpg","nickName": "昵称"}},"msgStr": ""}
      *
-     * @param test
+     * @param msg 消息内容
      * @return 处理结果
      */
     @RequestMapping("/test")
-    public ApiResponse<Void> push(@RequestParam("test") String test) {
+    public ApiResponse<Void> push(@RequestParam("msg") String msg) {
 
         return ApiResponse.SUCCESS;
     }

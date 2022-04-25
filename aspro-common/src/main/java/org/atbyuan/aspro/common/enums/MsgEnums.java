@@ -12,15 +12,18 @@ public interface MsgEnums {
     @Getter
     @AllArgsConstructor
     enum Category {
-        OTHER(0, "其他"),
-        VIDEO(1, "视频"),
-        VOICE(2, "音频"),
-        FILE(3, "文件"),
-        PAGE(4, "网页"),
-        IMAGE(5, "图片"),
+        DEFAULT(0, "", "初始配置"),
+        TEXT(1, "text", "文本"),
+        VIDEO(2, "video", "视频"),
+        VOICE(3, "voice", "音频"),
+        FILE(4, "file", "文件"),
+        PAGE(5, "page", "网页"),
+        IMAGE(6, "image", "图片"),
+        OTHER(7, "ext", "其他"),
         ;
 
         private final int code;
+        private final String filed;
         private final String desc;
 
         public static Category of(int code) {

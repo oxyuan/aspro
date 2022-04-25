@@ -13,11 +13,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @Slf4j
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class AsproGatewayApplication {
+public class GatewayAsproApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AsproGatewayApplication.class, args);
-        log.info("=====>>> aspro-gateway start success <<<=====");
+        SpringApplication.run(GatewayAsproApplication.class, args);
+        log.info("=====>>> gateway-aspro start success <<<=====");
     }
 
 }

@@ -20,9 +20,9 @@ spring:
         predicates:
         - Aspro=2
 
-# dev profile
 ---
 spring:
+  profiles: dev
   cloud:
     nacos:
       config:

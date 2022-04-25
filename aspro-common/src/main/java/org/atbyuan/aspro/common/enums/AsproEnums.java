@@ -55,6 +55,7 @@ public interface AsproEnums {
     enum Gateway {
         ADMIN(1, "admin"),
         API(2, "api"),
+        ENGINE(3, "engine"),
         ;
 
         private final Integer code;

@@ -1,6 +1,6 @@
-# dev profile
 ---
 spring:
+  profiles: dev
   cloud:
     nacos:
       config:
@@ -12,6 +12,7 @@ spring:
 # prod profile
 ---
 spring:
+  profiles: prod
   cloud:
     nacos:
       config:
