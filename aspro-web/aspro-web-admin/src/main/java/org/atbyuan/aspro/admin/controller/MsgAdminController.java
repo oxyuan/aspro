@@ -5,7 +5,7 @@ import cn.hutool.core.date.DateUtil;
 import org.atbyuan.aspro.common.exception.BusinessException;
 import org.atbyuan.aspro.common.pojo.entity.MsgConfig;
 import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
-import org.atbyuan.aspro.common.response.ApiResponse;
+import org.atbyuan.aspro.common.response.AsproResponse;
 import org.atbyuan.aspro.db.mapper.MsgConfigMapper;
 import org.atbyuan.aspro.db.mapper.MsgRecordMapper;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +31,7 @@ public class MsgAdminController {
     private MsgConfigMapper msgConfigMapper;
 
     @PostMapping("/add")
-    public ApiResponse<Void> add(MsgRecord msgRecord) {
+    public AsproResponse<Void> add(MsgRecord msgRecord) {
         Integer configId = msgRecord.getConfigId();
         if (configId == null) {
             throw new BusinessException("configId不能为空");
@@ -42,19 +42,19 @@ public class MsgAdminController {
         }
 
         msgRecordMapper.insert(msgRecord);
-        return ApiResponse.SUCCESS;
+        return AsproResponse.SUCCESS;
     }
 
     @GetMapping("/config/query")
-    public ApiResponse<MsgConfig> configQuery(@RequestParam("configId") Integer configId) {
-        return ApiResponse.success(msgConfigMapper.selectById(configId));
+    public AsproResponse<MsgConfig> configQuery(@RequestParam("configId") Integer configId) {
+        return AsproResponse.success(msgConfigMapper.selectById(configId));
     }
 
     @GetMapping("/dateFormat")
-    public ApiResponse<String> dateFormat(@RequestParam("date") Date date) {
+    public AsproResponse<String> dateFormat(@RequestParam("date") Date date) {
         DateTime dateTime = DateUtil.parse(date.toString(), "yyyy-MM-dd HH:mm:ss");
 
-        return ApiResponse.success(dateTime.toString());
+        return AsproResponse.success(dateTime.toString());
     }
 
     /**
@@ -64,9 +64,9 @@ public class MsgAdminController {
      * @return 处理结果
      */
     @RequestMapping("/test")
-    public ApiResponse<Void> push(@RequestParam("msg") String msg) {
+    public AsproResponse<Void> push(@RequestParam("msg") String msg) {
 
-        return ApiResponse.SUCCESS;
+        return AsproResponse.SUCCESS;
     }
 
 

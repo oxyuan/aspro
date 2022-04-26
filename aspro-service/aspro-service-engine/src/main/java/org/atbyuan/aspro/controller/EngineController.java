@@ -3,7 +3,7 @@ package org.atbyuan.aspro.controller;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
-import org.atbyuan.aspro.common.response.ApiResponse;
+import org.atbyuan.aspro.common.response.AsproResponse;
 import org.atbyuan.aspro.strategy.EntranceMsgStrategy;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +24,12 @@ public class EngineController {
     private EntranceMsgStrategy entranceMsgStrategy;
 
     @PostMapping("/send")
-    public ApiResponse<Void> send(MsgRecord msgRecord) {
+    public AsproResponse<Void> send(MsgRecord msgRecord) {
         log.info("send msg: {}", msgRecord);
 
         entranceMsgStrategy.execute(Lists.newArrayList(msgRecord));
 
-        return ApiResponse.SUCCESS;
+        return AsproResponse.SUCCESS;
     }
 
 }

@@ -2,7 +2,7 @@ package org.atbyuan.aspro.api.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.atbyuan.aspro.common.response.ApiResponse;
+import org.atbyuan.aspro.common.response.AsproResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AsproApiController {
 
     @GetMapping("/random")
-    public ApiResponse<Integer> random() {
-        return ApiResponse.success(RandomUtil.randomInt(10, 100));
+    public AsproResponse<Integer> random() {
+        return AsproResponse.success(RandomUtil.randomInt(10, 100));
     }
 
 }

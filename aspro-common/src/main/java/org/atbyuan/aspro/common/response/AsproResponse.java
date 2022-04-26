@@ -14,7 +14,7 @@ import org.atbyuan.aspro.common.enums.AsproEnums;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApiResponse<T> {
+public class AsproResponse<T> {
 
     private Integer code;
     private String message;
@@ -26,16 +26,16 @@ public class ApiResponse<T> {
     private static final String SUCCESS_MSG = AsproEnums.SystemCode.SYSTEM_SUCCESS.getMessage();
     private static final String ERROR_MSG = AsproEnums.SystemCode.SYSTEM_ERROR.getMessage();
 
-    public static final ApiResponse<Void> SUCCESS = ApiResponse.<Void>builder().code(SUCCESS_CODE).message(SUCCESS_MSG).build();
+    public static final AsproResponse<Void> SUCCESS = AsproResponse.<Void>builder().code(SUCCESS_CODE).message(SUCCESS_MSG).build();
 
-    public static <T> ApiResponse<T> success(T data) {
-        return ApiResponse.<T>builder()
+    public static <T> AsproResponse<T> success(T data) {
+        return AsproResponse.<T>builder()
                 .code(SUCCESS_CODE).message(SUCCESS_MSG).data(data)
                 .build();
     }
 
-    public static <T> ApiResponse<T> result(AsproEnums.SystemCode systemCode) {
-        return ApiResponse.<T>builder()
+    public static <T> AsproResponse<T> result(AsproEnums.SystemCode systemCode) {
+        return AsproResponse.<T>builder()
                 .code(systemCode.getCode()).message(systemCode.getMessage())
                 .build();
     }

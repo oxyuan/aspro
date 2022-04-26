@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.atbyuan.aspro.common.enums.AsproEnums;
 import org.atbyuan.aspro.common.exception.BusinessException;
-import org.atbyuan.aspro.common.response.ApiResponse;
+import org.atbyuan.aspro.common.response.AsproResponse;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
@@ -56,21 +56,21 @@ public class WebExceptionHandler extends AbstractErrorWebExceptionHandler {
         Throwable throwable = getError(request);
         if (throwable instanceof BusinessException) {
             BusinessException commonException = (BusinessException) throwable;
-            ApiResponse<?> resObject = ApiResponse.builder()
+            AsproResponse<?> resObject = AsproResponse.builder()
                     .code(commonException.getCode())
                     .message(commonException.getMessage())
                     .build();
-            BodyInserter<ApiResponse<?>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromValue(resObject);
+            BodyInserter<AsproResponse<?>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromValue(resObject);
             return ServerResponse.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(bodyInserter);
 
         } else {
             Integer status = (Integer) errorAttributes.get("status");
             AsproEnums.SystemCode systemCodeEnum = AsproEnums.SystemCode.of(status);
-            ApiResponse<?> resObject = ApiResponse.builder()
+            AsproResponse<?> resObject = AsproResponse.builder()
                     .code(systemCodeEnum.getCode())
                     .message(systemCodeEnum.getMessage())
                     .build();
-            BodyInserter<ApiResponse<?>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromValue(resObject);
+            BodyInserter<AsproResponse<?>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromValue(resObject);
             return ServerResponse.status(HttpStatus.valueOf(status)).contentType(MediaType.APPLICATION_JSON).body(bodyInserter);
         }
     }
