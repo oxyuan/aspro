@@ -39,6 +39,7 @@
         <commons-pool2.version>2.9.0</commons-pool2.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <fastjson.version>1.2.79</fastjson.version>
+        <jackson.version>2.13.2</jackson.version>
         <httpmime.version>4.5.12</httpmime.version>
         <jedis.version>2.9.1</jedis.version>
         <hutool.version>5.5.7</hutool.version>
@@ -154,11 +155,23 @@
                 <version>${validation-api.version}</version>
             </dependency>
 
+            <!-- serializer -->
             <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
