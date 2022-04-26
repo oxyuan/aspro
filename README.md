@@ -2,6 +2,15 @@
 
 A simple project.
 
+---
+
+设计理念： 完全复用。
+
+复用代码包括：
+
+1. 配置分离，相同的配置在不同服务中也只需要设置一次；
+2. 业务逻辑解耦，将不同类型的统一业务抽离出来；
+
 ### 一、aspro-web
 
 web 服务入口
@@ -45,7 +54,7 @@ web 服务入口
 
 - aspro-service-engine
 
-> 引擎服务
+> 基础业务逻辑
 
 - aspro-service-stream
 
