@@ -15,7 +15,7 @@ public interface MsgEnums {
         DEFAULT(0, "", "初始配置"),
         TEXT(1, "text", "文本"),
         VIDEO(2, "video", "视频"),
-        VOICE(3, "audio", "音频"),
+        AUDIO(3, "audio", "音频"),
         FILE(4, "file", "文件"),
         PAGE(5, "page", "网页"),
         IMAGE(6, "image", "图片"),

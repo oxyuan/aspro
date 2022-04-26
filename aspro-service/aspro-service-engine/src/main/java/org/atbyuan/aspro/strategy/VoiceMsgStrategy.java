@@ -17,7 +17,7 @@ public class VoiceMsgStrategy extends AbstractMsgStrategy {
 
     @Override
     public MsgEnums.Category getType() {
-        return MsgEnums.Category.VOICE;
+        return MsgEnums.Category.AUDIO;
     }
 
     @Override
