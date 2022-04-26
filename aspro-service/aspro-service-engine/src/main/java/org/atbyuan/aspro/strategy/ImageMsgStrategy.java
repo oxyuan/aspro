@@ -17,7 +17,7 @@ public class ImageMsgStrategy extends AbstractMsgStrategy{
 
     @Override
     public MsgEnums.Category getType() {
-        return MsgEnums.Category.VIDEO;
+        return MsgEnums.Category.IMAGE;
     }
 
     @Override

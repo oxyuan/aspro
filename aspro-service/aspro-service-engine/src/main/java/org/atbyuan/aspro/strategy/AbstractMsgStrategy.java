@@ -10,7 +10,8 @@ import org.atbyuan.aspro.common.enums.MsgEnums;
 import org.atbyuan.aspro.common.pojo.entity.MsgConfig;
 import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
 import org.atbyuan.aspro.common.tls.ContextHolder;
-import org.atbyuan.aspro.db.mapper.MsgConfigMapper;
+import org.atbyuan.aspro.db.repository.MsgConfigRepository;
+import org.atbyuan.aspro.db.repository.MsgRecordRepository;
 import org.atbyuan.aspro.factory.MsgStrategyFactory;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,6 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -32,7 +32,9 @@ import java.util.stream.Collectors;
 public abstract class AbstractMsgStrategy implements MsgStrategy {
 
     @Resource
-    private MsgConfigMapper msgConfigMapper;
+    private MsgConfigRepository msgConfigRepository;
+    @Resource
+    private MsgRecordRepository msgRecordRepository;
 
     @PostConstruct
     public void init() {
@@ -83,7 +85,7 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
     /**
      * 具体的消息工具逻辑处理，统一调用
      *
-     * @param msgList  消息列表
+     * @param msgList   消息列表
      * @param predicate 处理逻辑
      */
     protected void doHandle(List<MsgRecord> msgList, Predicate<List<String>> predicate) {
@@ -114,11 +116,14 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
      * @param msgList 消息列表
      */
     protected void postProcessBeforeHandle(List<MsgRecord> msgList) {
+        // 1. 消息入库
+        Lists.partition(msgList, 50).forEach(msgRecordList -> msgRecordRepository.saveBatch(msgList));
+        // 2. 获取消息的配置信息
         List<Integer> configIdList = msgList.stream().map(MsgRecord::getConfigId).distinct().collect(Collectors.toList());
         if (CollUtil.isEmpty(configIdList)) {
             return;
         }
-        List<MsgConfig> configList = msgConfigMapper.selectBatchIds(configIdList);
+        List<MsgConfig> configList = msgConfigRepository.selectBatchIds(configIdList);
         if (CollUtil.isEmpty(configList)) {
             return;
         }

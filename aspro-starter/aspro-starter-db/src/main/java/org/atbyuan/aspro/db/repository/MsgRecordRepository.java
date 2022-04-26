@@ -6,6 +6,8 @@ import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
 import org.atbyuan.aspro.db.mapper.MsgRecordMapper;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
+
 /**
  * @author atbyuan
  * @since 2022/4/19 18:25
@@ -14,8 +16,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MsgRecordRepository extends ServiceImpl<MsgRecordMapper, MsgRecord> {
 
+    @Resource
+    private MsgRecordMapper msgRecordMapper;
 
-
-
+    @Override
+    public MsgRecordMapper getBaseMapper() {
+        return this.msgRecordMapper;
+    }
 
 }
