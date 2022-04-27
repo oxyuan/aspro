@@ -13,6 +13,7 @@ import org.atbyuan.aspro.common.tls.ContextHolder;
 import org.atbyuan.aspro.db.repository.MsgConfigRepository;
 import org.atbyuan.aspro.db.repository.MsgRecordRepository;
 import org.atbyuan.aspro.factory.MsgStrategyFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -20,6 +21,8 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -31,6 +34,8 @@ import java.util.stream.Collectors;
 @Component
 public abstract class AbstractMsgStrategy implements MsgStrategy {
 
+    @Resource
+    private ExecutorService corePriorThreadPool;
     @Resource
     private MsgConfigRepository msgConfigRepository;
     @Resource
@@ -48,6 +53,7 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
      * @param msgList: 待处理消息列表
      */
     @Override
+    @Async
     public void execute(List<MsgRecord> msgList) {
         if (CollUtil.isEmpty(msgList)) {
             log.info("msgList is empty");
@@ -98,15 +104,20 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
             }
             List<String> stringList = convert(content);
 
-            boolean status = predicate.test(stringList);
+            corePriorThreadPool.execute(() -> {
+                boolean status = true;
+                try {
+                    status = predicate.test(stringList);
 
-            if (!status) {
-                log.error("{} doHandle failed. msgId: {}", strategyClassName, msgRecord.getId());
-                // TODO.
-                continue;
-            }
-
-            log.info("{} doHandle. stringList: {}", strategyClassName, stringList);
+                } catch (Exception e) {
+                    log.error("{} doHandle catch exception. {}", strategyClassName, ExceptionUtils.getMessage(e));
+                }
+                if (!status) {
+                    log.error("{} doHandle failed. msgId: {}", strategyClassName, msgRecord.getId());
+                    // TODO.
+                }
+                log.info("{} doHandle. stringList: {}", strategyClassName, stringList);
+            });
         }
     }
 
