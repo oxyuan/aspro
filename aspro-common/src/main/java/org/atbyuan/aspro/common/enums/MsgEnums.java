@@ -12,7 +12,7 @@ public interface MsgEnums {
     @Getter
     @AllArgsConstructor
     enum Category {
-        DEFAULT(0, "", "初始配置"),
+        EMPTY(0, "", "空"),
         TEXT(1, "text", "文本"),
         VIDEO(2, "video", "视频"),
         AUDIO(3, "audio", "音频"),

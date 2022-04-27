@@ -13,11 +13,11 @@ import java.util.List;
  */
 @Slf4j
 @Component
-public class EntranceMsgStrategy extends AbstractMsgStrategy {
+public class EmptyMsgStrategy extends AbstractMsgStrategy {
 
     @Override
     public MsgEnums.Category getType() {
-        return MsgEnums.Category.DEFAULT;
+        return MsgEnums.Category.EMPTY;
     }
 
     @Override
