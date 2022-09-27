@@ -2,15 +2,12 @@ package org.atbyuan.aspro.common.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -46,10 +43,12 @@ public class MsgRecord implements Serializable {
     /** 版本号 */
     private Integer revision;
     /** 创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTF-8")
     private Date createTime;
     /** 创建者 */
     private String creator;
     /** 更新时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTF-8")
     private Date updateTime;
     /** 更新者 */
     private String updater;
