@@ -6,7 +6,7 @@ import java.util.Map;
  * @author atbyuan
  * @since 2022/4/24 22:31
  */
-public interface ContextHolder {
+public interface MsgContextHolder {
 
     class Config {
 

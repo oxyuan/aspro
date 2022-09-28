@@ -1,0 +1,95 @@
+# 分库分表规则
+spring:
+  sharding-sphere:
+    props:
+      sql:
+        show: true
+    sharding:
+      tables:
+        msg:
+          actualDataNodes: ds$->{0..1}.msg_$->{1..3}
+          databaseStrategy:
+            standard:
+              preciseAlgorithmClassName: org.atbyuan.aspro.sharding.algorithm.DbPreciseShardingAlgorithm
+              shardingColumn: config_id
+          keyGenerator:
+            column: id
+            type: SNOWFLAKE
+          logicTable: msg
+          tableStrategy:
+            standard:
+              preciseAlgorithmClassName: org.atbyuan.aspro.sharding.algorithm.TablePreciseShardingAlgorithm
+              shardingColumn: release_time
+
+logging.level:
+  org:
+    example:
+      web:
+        dao: DEBUG
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.atbyuan.aspro.common.pojo.entity
+
+
+#=============================================>[ dev ]<=============================================
+---
+spring:
+  profiles: dev
+  #  cloud:
+  #    nacos:
+  #      config:
+  #        extension-configs:
+  #          - data-id: aspro-starter-sharding.yaml
+  #            group: aspro
+  #            refresh: true
+  sharding-sphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        #        url: jdbc:mysql://iobyuan.org:3306/sharding_0
+        #        type: com.alibaba.druid.pool.DruidDataSource
+        jdbc-url: jdbc:mysql://:3306/sharding_0
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+        password:
+      ds1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        #        jdbc-url: jdbc:mysql://atbyuan.org:3306/sharding_1
+        #        type: com.alibaba.druid.pool.DruidDataSource
+        jdbc-url: jdbc:mysql://:3306/sharding_1
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+        password:
+
+
+#=============================================>[ prod ]<=============================================
+---
+spring:
+  profiles: prod
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-starter-sharding.yaml
+            group: aspro
+            refresh: true
+  sharding-sphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        #        url: jdbc:mysql://:3306/sharding_0
+        #        type: com.alibaba.druid.pool.DruidDataSource
+        jdbc-url: jdbc:mysql://:3306/sharding_0
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+        password:
+      ds1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        #        jdbc-url: jdbc:mysql://:3306/sharding_1
+        #        type: com.alibaba.druid.pool.DruidDataSource
+        jdbc-url: jdbc:mysql://:3306/sharding_1
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+        password:

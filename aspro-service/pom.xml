@@ -15,6 +15,7 @@
         <module>aspro-service-stream</module>
         <module>aspro-service-engine</module>
         <module>aspro-service-consumer</module>
+        <module>aspro-service-govern</module>
     </modules>
 
     <properties>

@@ -9,7 +9,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.atbyuan.aspro.common.enums.MsgEnums;
 import org.atbyuan.aspro.common.pojo.entity.MsgConfig;
 import org.atbyuan.aspro.common.pojo.entity.MsgRecord;
-import org.atbyuan.aspro.common.tls.ContextHolder;
+import org.atbyuan.aspro.common.tls.MsgContextHolder;
 import org.atbyuan.aspro.db.repository.MsgConfigRepository;
 import org.atbyuan.aspro.db.repository.MsgRecordRepository;
 import org.atbyuan.aspro.factory.MsgStrategyFactory;
@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -67,7 +66,7 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
 
         Map<Integer, List<MsgRecord>> configMsgMap = msgList.stream().collect(Collectors.groupingBy(MsgRecord::getConfigId));
 
-        Map<Integer, String> configMap = ContextHolder.Config.get();
+        Map<Integer, String> configMap = MsgContextHolder.Config.get();
 
         configMsgMap.forEach((configId, msgRecordList) -> {
             // 循环处理消息
@@ -139,7 +138,7 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
             return;
         }
         Map<Integer, String> configContentMap = configList.stream().collect(Collectors.toMap(MsgConfig::getId, MsgConfig::getContent));
-        ContextHolder.Config.init(configContentMap);
+        MsgContextHolder.Config.init(configContentMap);
     }
 
     /**
@@ -149,7 +148,7 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
      */
     protected void postProcessAfterHandle(List<MsgRecord> msgList) {
 
-        ContextHolder.Config.clear();
+        MsgContextHolder.Config.clear();
     }
 
     /**

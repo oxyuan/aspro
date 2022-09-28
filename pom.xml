@@ -27,6 +27,9 @@
 
         <redisson.version>3.17.6</redisson.version>
 
+        <sharding-sphere.version>4.1.1</sharding-sphere.version>
+        <shardingsphere-jdbc-core.version>5.2.0</shardingsphere-jdbc-core.version>
+
         <velocity-engine-core.version>2.1</velocity-engine-core.version>
         <mybatis-plus-boot.verison>3.4.1</mybatis-plus-boot.verison>
         <pagehelper.version>1.2.13</pagehelper.version>
@@ -49,7 +52,6 @@
         <guava.version>30.1-jre</guava.version>
         <elasticsearch.version>7.2.0</elasticsearch.version>
         <swagger.version>3.0.0</swagger.version>
-        <sharding-sphere.version>4.1.1</sharding-sphere.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <persistence-api.version>1.0.2</persistence-api.version>
         <javamelody.version>1.85.0</javamelody.version>
@@ -91,7 +93,25 @@
                 <version>${redisson.version}</version>
             </dependency>
 
+
             <!--                        数据库相关                        -->
+            <!-- sharding-sphere -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding-sphere.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere-jdbc-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core</artifactId>
+                <version>${shardingsphere-jdbc-core.version}</version>
+            </dependency>
+
             <!--mybatis-plus-->
             <dependency>
                 <groupId>com.baomidou</groupId>

@@ -1,0 +1,20 @@
+server:
+  port: 8012
+
+spring:
+  application:
+    name: aspro-service-govern
+  profiles:
+    active: dev
+    include: sharding,nacos
+
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-service-govern.yaml
+            group: aspro
+            refresh: true

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.atbyuan.aspro.sharding.mapper.MsgMapper">
+
+    <insert id="insertBatch" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO msg
+        (id,
+        config_id,
+        title,
+        content,
+        release_time,
+        uid,
+        nickname,
+        msg_str)
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.id},
+            #{item.configId},
+            #{item.title},
+            #{item.content},
+            #{item.releaseTime},
+            #{item.uid},
+            #{item.nickname},
+            #{item.msgStr}
+            )
+        </foreach>
+    </insert>
+
+
+    <insert id="upsertBatch" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO msg(
+        id,
+        config_id,
+        title,
+        content,
+        release_time,
+        uid,
+        nickname,
+        msg_str
+        )
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.id},
+            #{item.configId},
+            #{item.title},
+            #{item.content},
+            #{item.releaseTime},
+            #{item.uid},
+            #{item.nickname},
+            #{item.msgStr}
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        id = VALUES(id),
+        config_id = VALUES(config_id),
+        title = VALUES(title),
+        content = VALUES(content),
+        release_time = VALUES(release_time),
+        uid = VALUES(uid),
+        nickname = VALUES(nickname),
+        msg_str = VALUES(msg_str)
+    </insert>
+</mapper>
