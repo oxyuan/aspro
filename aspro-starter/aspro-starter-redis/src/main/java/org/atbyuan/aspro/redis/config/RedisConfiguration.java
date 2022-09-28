@@ -1,4 +1,4 @@
-package org.atbyuan.aspro.db.config;
+package org.atbyuan.aspro.redis.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
