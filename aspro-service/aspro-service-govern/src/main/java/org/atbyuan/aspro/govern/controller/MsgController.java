@@ -80,7 +80,7 @@ public class MsgController {
                 .title("title-" + RandomUtil.randomString(3))
                 .content("this is a random str: " + RandomUtil.randomString(randomInt))
                 .releaseTime(new Date())
-                .uid(RandomUtil.randomInt(100, 1000))
+                .uid(RandomUtil.randomInt(100, 1000000))
                 .nickname("nickname-" + RandomUtil.randomString(5).toLowerCase())
                 .msgStr(RandomUtil.randomString(randomInt))
                 .build();
