@@ -20,7 +20,7 @@ public abstract class AbstractPreciseShardingAlgorithm<T extends Comparable<?>> 
 
     public void init() {
         if (shardingSliceProperties == null) {
-            synchronized (DbPreciseShardingAlgorithm.class) {
+            synchronized (AbstractPreciseShardingAlgorithm.class) {
                 if (shardingSliceProperties == null) {
                     shardingSliceProperties = SpringUtil.getBean(ShardingSliceProperties.class);
                 }
