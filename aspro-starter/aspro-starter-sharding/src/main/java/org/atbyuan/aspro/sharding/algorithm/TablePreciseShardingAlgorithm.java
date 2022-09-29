@@ -37,7 +37,7 @@ public class TablePreciseShardingAlgorithm extends AbstractPreciseShardingAlgori
 
         for (String availableTargetName : tableNames) {
             if (("msg_" + suffix).equals(availableTargetName)) {
-                log.info("actual table: [{}]", availableTargetName);
+                log.info("actual table: [[{}]]", availableTargetName);
                 return availableTargetName;
             }
         }

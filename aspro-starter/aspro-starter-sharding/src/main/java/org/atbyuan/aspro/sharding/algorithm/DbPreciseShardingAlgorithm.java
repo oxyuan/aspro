@@ -42,10 +42,12 @@ public class DbPreciseShardingAlgorithm extends AbstractPreciseShardingAlgorithm
         //精确分片
         log.info("column name: [{}]", preciseShardingValue.getValue());
 
+        int shardingPartition = preciseShardingValue.getValue() % (shardingSliceProperties.getDatabase());
+        String dbShardingName = "ds" + (shardingPartition + 1);
+
         for (String availableTargetName : dbNames) {
-            Integer value = preciseShardingValue.getValue();
-            if (("ds" + value % (shardingSliceProperties.getDatabase())).equals(availableTargetName)) {
-                log.info("actual ds: [{}]", availableTargetName);
+            if ((dbShardingName).equals(availableTargetName)) {
+                log.info("actual ds: [[{}]]", availableTargetName);
                 return availableTargetName;
             }
         }
