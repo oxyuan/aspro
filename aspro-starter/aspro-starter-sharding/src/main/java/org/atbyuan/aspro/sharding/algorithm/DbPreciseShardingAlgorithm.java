@@ -44,7 +44,7 @@ public class DbPreciseShardingAlgorithm extends AbstractPreciseShardingAlgorithm
 
         for (String availableTargetName : dbNames) {
             Integer value = preciseShardingValue.getValue();
-            if (("ds" + value % (shardingSliceProperties.getDatabase() + 1)).equals(availableTargetName)) {
+            if (("ds" + value % (shardingSliceProperties.getDatabase())).equals(availableTargetName)) {
                 log.info("actual ds: [{}]", availableTargetName);
                 return availableTargetName;
             }
