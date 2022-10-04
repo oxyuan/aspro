@@ -44,6 +44,14 @@ web 服务入口
 
 > web 服务的封装
 
+- aspro-starter-redis
+
+> redis 相关服务的封装
+
+- aspro-starter-sharding
+
+> 支持分库分表，支持集成nacos后动态扩展表结构. [sharding-jdbc v5.2.0]()。
+
 ### 三、aspro-service
 
 业务逻辑
@@ -59,3 +67,7 @@ web 服务入口
 - aspro-service-stream
 
 > 流数据处理
+ 
+- aspro-service-govern
+
+> 分库分表接口调用服务
