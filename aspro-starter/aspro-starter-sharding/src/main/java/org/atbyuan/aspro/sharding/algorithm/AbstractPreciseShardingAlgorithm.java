@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shardingsphere.sharding.api.sharding.standard.RangeShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.StandardShardingAlgorithm;
 import org.atbyuan.aspro.sharding.properties.ShardingSliceProperties;
+import org.atbyuan.aspro.sharding.utools.ShardingAlgorithmTool;
 
 import java.util.Collection;
 import java.util.Properties;
@@ -17,12 +18,21 @@ import java.util.Properties;
 public abstract class AbstractPreciseShardingAlgorithm<T extends Comparable<?>> implements StandardShardingAlgorithm<T> {
 
     protected static volatile ShardingSliceProperties shardingSliceProperties;
+    protected static volatile ShardingAlgorithmTool shardingAlgorithmTool;
 
     public void init() {
         if (shardingSliceProperties == null) {
             synchronized (AbstractPreciseShardingAlgorithm.class) {
                 if (shardingSliceProperties == null) {
                     shardingSliceProperties = SpringUtil.getBean(ShardingSliceProperties.class);
+                }
+            }
+        }
+
+        if (shardingAlgorithmTool == null) {
+            synchronized (AbstractPreciseShardingAlgorithm.class) {
+                if (shardingAlgorithmTool == null) {
+                    shardingAlgorithmTool = SpringUtil.getBean(ShardingAlgorithmTool.class);
                 }
             }
         }

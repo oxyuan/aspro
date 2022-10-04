@@ -38,7 +38,8 @@
         <shardingsphere-jdbc-core.version>5.2.0</shardingsphere-jdbc-core.version>
 
         <velocity-engine-core.version>2.1</velocity-engine-core.version>
-        <mybatis-plus-boot.verison>3.4.1</mybatis-plus-boot.verison>
+        <mybatis-plus-boot.verison>3.5.2</mybatis-plus-boot.verison>
+        <mybatis.version>3.5.11</mybatis.version>
         <pagehelper.version>1.2.13</pagehelper.version>
         <lombok.version>1.18.12</lombok.version>
         <easyexcel.version>2.1.6</easyexcel.version>
@@ -125,6 +126,13 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot.verison}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
             <!--分页插件-->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>

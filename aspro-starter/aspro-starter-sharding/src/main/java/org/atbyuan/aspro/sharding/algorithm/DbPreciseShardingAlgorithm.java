@@ -3,8 +3,11 @@ package org.atbyuan.aspro.sharding.algorithm;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
+import org.atbyuan.aspro.sharding.tls.ContextHolder;
 
 import java.util.Collection;
+
+import static org.atbyuan.aspro.sharding.constant.ShardingConst.DBM;
 
 /**
  * @author atbyuan
@@ -13,9 +16,6 @@ import java.util.Collection;
 
 @Slf4j
 public class DbPreciseShardingAlgorithm extends AbstractPreciseShardingAlgorithm<Integer> {
-
-    // 主库别名
-    private static final String DBM = "ds1";
 
     /**
      * 精准分库策略
@@ -44,6 +44,8 @@ public class DbPreciseShardingAlgorithm extends AbstractPreciseShardingAlgorithm
 
         int shardingPartition = preciseShardingValue.getValue() % (shardingSliceProperties.getDatabase());
         String dbShardingName = "ds" + (shardingPartition + 1);
+
+        ContextHolder.init(dbShardingName);
 
         for (String availableTargetName : dbNames) {
             if ((dbShardingName).equals(availableTargetName)) {

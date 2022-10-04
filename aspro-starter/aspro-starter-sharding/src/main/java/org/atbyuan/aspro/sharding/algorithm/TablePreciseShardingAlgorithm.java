@@ -3,9 +3,12 @@ package org.atbyuan.aspro.sharding.algorithm;
 import cn.hutool.core.date.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
+import org.atbyuan.aspro.sharding.utools.ShardingAlgorithmTool;
 
 import java.util.Collection;
 import java.util.Date;
+
+import static org.atbyuan.aspro.sharding.constant.ShardingConst.DEF_LOGIN_TABLE;
 
 /**
  * @author atbyuan
@@ -35,13 +38,18 @@ public class TablePreciseShardingAlgorithm extends AbstractPreciseShardingAlgori
         int second = DateUtil.millisecond(value);
         int suffix = second == 0 ? 1 : (second % shardingSliceProperties.getTable()) + 1;
 
+        String resultTableName = DEF_LOGIN_TABLE + "_" + suffix;
+
+        log.info("actual table: [[{}]]", resultTableName);
         for (String availableTargetName : tableNames) {
-            if (("msg_" + suffix).equals(availableTargetName)) {
-                log.info("actual table: [[{}]]", availableTargetName);
+            if ((resultTableName).equals(availableTargetName) && ShardingAlgorithmTool.contains(resultTableName)) {
                 return availableTargetName;
             }
         }
-        return null;
+        if (!tableNames.contains(resultTableName)) {
+            tableNames.add(resultTableName);
+        }
+        return shardingAlgorithmTool.shardingTablesCheckAndCreatAndReturn(DEF_LOGIN_TABLE, resultTableName);
     }
 
 }
