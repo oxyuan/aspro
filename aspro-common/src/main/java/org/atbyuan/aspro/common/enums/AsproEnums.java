@@ -16,7 +16,7 @@ public interface AsproEnums {
         // 系统响应失败
         SYSTEM_FAIL(-1, "fail"),
         // 系统响应成功
-        SYSTEM_SUCCESS(0, "success"),
+        SYSTEM_SUCCESS(200, "success"),
         // 参数验证错误
         SYSTEM_NO_VALID(400, "参数验证错误！"),
         // 无权访问

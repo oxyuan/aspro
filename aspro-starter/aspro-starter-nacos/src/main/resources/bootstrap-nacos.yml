@@ -2,7 +2,7 @@
 ---
 nacos:
   server-addr: localhost:8848
-  password: password
+  password:
 
 spring:
   profiles: dev
@@ -10,8 +10,8 @@ spring:
     nacos:
       config:
         enabled: true
-#        file-extension: yaml
-#        group: aspro
+        file-extension: yaml
+        group: aspro
 #        prefix: ${spring.application.name}
         namespace: 3bf841fe-a127-4231-870c-b31052086425
         enableRemoteSyncConfig: true
@@ -35,8 +35,8 @@ spring:
     nacos:
       config:
         enabled: true
-        #        file-extension: yaml
-        #        group: aspro
+        file-extension: yaml
+        group: aspro
         #        prefix: ${spring.application.name}
         namespace: 3bf841fe-a127-4231-870c-b31052086425
         enableRemoteSyncConfig: true

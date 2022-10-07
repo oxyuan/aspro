@@ -1,13 +1,22 @@
 package org.atbyuan.aspro.redis.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.scripting.support.ResourceScriptSource;
+
+import java.io.IOException;
 
 /**
  * @author atbyuan
@@ -50,16 +59,29 @@ public class RedisConfiguration {
         return stringRedisTemplate;
     }
 
-    // public JedisConnectionFactory jedisConnectionFactory(int database, String hostName, int port, String password) {
-    //     RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-    //     redisStandaloneConfiguration.setHostName(hostName);
-    //     redisStandaloneConfiguration.setPort(port);
-    //     redisStandaloneConfiguration.setDatabase(database);
-    //     redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
-    //     JedisClientConfiguration.JedisClientConfigurationBuilder jedisClientConfiguration = JedisClientConfiguration.builder();
-    //     // 60s connection timeout
-    //     jedisClientConfiguration.connectTimeout(Duration.ofSeconds(60));
-    //     return new JedisConnectionFactory(redisStandaloneConfiguration, jedisClientConfiguration.build());
-    // }
+//    @Bean(destroyMethod = "shutdown")
+//    @ConditionalOnMissingBean(RedissonClient.class)
+//    public RedissonClient redisson() throws IOException {
+//        Config config = new Config();
+//        config.useSingleServer()
+//                .setAddress("redis://" + redisProperties.getHost() + ":" + redisProperties.getPort())
+//                .setPassword(redisProperties.getPassword())
+//                .setDatabase(redisProperties.getDatabase())
+//                .setConnectionMinimumIdleSize(5);
+//        return Redisson.create(config);
+//    }
+
+    /**
+     * 读取限流脚本
+     *
+     * @return
+     */
+    @Bean
+    public DefaultRedisScript<Number> redisLuaScript() {
+        DefaultRedisScript<Number> redisScript = new DefaultRedisScript<>();
+        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("rateLimit.lua")));
+        redisScript.setResultType(Number.class);
+        return redisScript;
+    }
 
 }

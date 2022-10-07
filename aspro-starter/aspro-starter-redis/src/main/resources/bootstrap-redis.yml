@@ -1,0 +1,21 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password:
+
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-starter-redis.yaml
+            group: aspro
+            refresh: true
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: prod

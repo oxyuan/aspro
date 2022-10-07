@@ -6,11 +6,15 @@ spring:
     name: aspro-web-admin
   profiles:
     active: dev
-    include: db, nacos
+    include:
+      - db
+      - redis
+      - nacos
 
 # dev profile
 ---
 spring:
+  profiles: dev
   cloud:
     nacos:
       config:
