@@ -50,7 +50,7 @@ web 服务入口
 
 - aspro-starter-sharding
 
-> 支持分库分表，支持集成 nacos 后动态扩展表的分片数量. [sharding-jdbc v5.2.0]()。
+> 支持分库分表，支持集成 nacos 后动态扩展表的分片数量. [sharding-jdbc v5.2.0](https://shardingsphere.apache.org/document/current/en/user-manual/common-config/builtin-algorithm/sharding/#class-based-sharding-algorithm)。
 
 ### 三、aspro-service
 
