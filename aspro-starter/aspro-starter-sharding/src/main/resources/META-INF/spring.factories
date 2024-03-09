@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.atbyuan.aspro.sharding.ShardingAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.oxyuan.aspro.sharding.ShardingAutoConfiguration

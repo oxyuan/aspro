@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.atbyuan.aspro.db.DbAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.oxyuan.aspro.db.DbAutoConfiguration

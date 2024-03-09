@@ -7,10 +7,14 @@ spring:
   cloud:
     nacos:
       config:
-        extension-configs:
+#        extension-configs:
+#          - data-id: aspro-starter-redis.yaml
+#            group: aspro
+#            refresh: true
+        shared-configs:
           - data-id: aspro-starter-redis.yaml
-            group: aspro
             refresh: true
+            group: aspro
 
 ---
 spring:

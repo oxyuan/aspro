@@ -6,7 +6,7 @@ spring:
     name: aspro-service-govern
   profiles:
     active: dev
-    include: sharding,nacos
+    include: sharding,nacos,redis
 
 ---
 spring:

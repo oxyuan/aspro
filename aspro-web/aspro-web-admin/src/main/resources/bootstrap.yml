@@ -8,8 +8,8 @@ spring:
     active: dev
     include:
       - db
-      - redis
       - nacos
+      - redis
 
 # dev profile
 ---

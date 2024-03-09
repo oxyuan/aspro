@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.atbyuan.aspro.nacos.NacosAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.oxyuan.aspro.nacos.NacosAutoConfiguration

@@ -17,7 +17,7 @@ spring:
   #          actualDataNodes: ds$->{1..${sharding.slice.database}}.msg_$->{1..${sharding.slice.table}}
   #          databaseStrategy:
   #            standard:
-  #              preciseAlgorithmClassName: org.atbyuan.aspro.sharding.algorithm.DbPreciseShardingAlgorithm
+  #              preciseAlgorithmClassName: algorithm.sharding.org.oxyuan.aspro.DbPreciseShardingAlgorithm
   #              shardingColumn: config_id
   #          keyGenerator:
   #            column: id
@@ -25,7 +25,7 @@ spring:
   #          logicTable: msg
   #          tableStrategy:
   #            standard:
-  #              preciseAlgorithmClassName: org.atbyuan.aspro.sharding.algorithm.TablePreciseShardingAlgorithm
+  #              preciseAlgorithmClassName: algorithm.sharding.org.oxyuan.aspro.TablePreciseShardingAlgorithm
   #              shardingColumn: release_time
 
   # [v5.2.0]
@@ -50,12 +50,12 @@ spring:
 #            type: CLASS_BASED  # 分片算法配置:自定义类
 #            props:
 #              strategy: STANDARD
-#              algorithmClassName: org.atbyuan.aspro.sharding.algorithm.DbPreciseShardingAlgorithm  #自定义分片类
+#              algorithmClassName: algorithm.sharding.org.oxyuan.aspro.DbPreciseShardingAlgorithm  #自定义分片类
 #          table-strategy: #分片算法名称
 #            type: CLASS_BASED  # 分片算法配置:自定义类
 #            props:
 #              strategy: STANDARD
-#              algorithmClassName: org.atbyuan.aspro.sharding.algorithm.TablePreciseShardingAlgorithm  #自定义分片类
+#              algorithmClassName: algorithm.sharding.org.oxyuan.aspro.TablePreciseShardingAlgorithm  #自定义分片类
 
 #logging.level:
 #  org:
@@ -64,7 +64,7 @@ spring:
 #        dao: DEBUG
 #mybatis:
 #  mapper-locations: classpath:mapper/*.xml
-#  type-aliases-package: org.atbyuan.aspro.common.pojo.entity
+#  type-aliases-package: org.oxyuan.aspro.common.pojo.entity
 
 
 #=============================================>[ dev ]<=============================================
