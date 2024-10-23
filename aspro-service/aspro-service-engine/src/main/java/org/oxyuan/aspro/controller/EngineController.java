@@ -6,6 +6,7 @@ import org.oxyuan.aspro.common.pojo.entity.MsgRecord;
 import org.oxyuan.aspro.common.response.AsproResponse;
 import org.oxyuan.aspro.strategy.EmptyMsgStrategy;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class EngineController {
     private EmptyMsgStrategy emptyMsgStrategy;
 
     @PostMapping("/send")
-    public AsproResponse<Void> send(MsgRecord msgRecord) {
+    public AsproResponse<Void> send(@RequestBody MsgRecord msgRecord) {
         log.info("send msg: {}", msgRecord);
 
         emptyMsgStrategy.execute(Lists.newArrayList(msgRecord));

@@ -19,20 +19,19 @@
     <dependencies>
         <dependency>
             <groupId>org.oxyuan.aspro</groupId>
-            <artifactId>aspro-starter-sharding</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>aspro-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.oxyuan.aspro</groupId>
-            <artifactId>aspro-starter-web</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>aspro-starter-db</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.oxyuan.aspro</groupId>
+            <artifactId>aspro-starter-sharding</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.oxyuan.aspro</groupId>
             <artifactId>aspro-starter-nacos</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

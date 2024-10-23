@@ -40,6 +40,11 @@
                 <artifactId>aspro-starter-nacos</artifactId>
                 <version>${version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.oxyuan.aspro</groupId>
+                <artifactId>aspro-starter-sharding</artifactId>
+                <version>${version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

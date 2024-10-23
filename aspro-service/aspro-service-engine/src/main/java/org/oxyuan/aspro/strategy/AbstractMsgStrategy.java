@@ -67,6 +67,10 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
         Map<Integer, String> configMap = MsgContextHolder.Config.get();
 
         configMsgMap.forEach((configId, msgRecordList) -> {
+            if (CollUtil.isEmpty(configMap)) {
+                log.error("msg config is empty. configId: [{}]", configId);
+                return;
+            }
             // 循环处理消息
             for (MsgStrategy strategy : MsgStrategyFactory.getStrategies(configMap.get(configId))) {
                 try {

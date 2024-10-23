@@ -6,11 +6,11 @@ spring:
     name: aspro-service-govern
   profiles:
     active: dev
-    include: sharding,nacos,redis
+    include: db # sharding,nacos,redis
 
 ---
 spring:
-  profiles: dev
+  profiles: test
   cloud:
     nacos:
       config:
