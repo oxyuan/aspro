@@ -1,13 +1,17 @@
 server:
-  port: 8011
+  port: 8002
 
 spring:
   application:
-    name: aspro-service-engine
+    name: aspro-web-admin
   profiles:
     active: dev
-    include: db, nacos
+#    include:
+#      - db
+#      - nacos
+#      - redis
 
+# dev profile
 ---
 spring:
   profiles: dev
@@ -15,6 +19,6 @@ spring:
     nacos:
       config:
         extension-configs:
-          - data-id: aspro-service-engine.yaml
+          - data-id: aspro-web-admin.yaml
             group: aspro
             refresh: true

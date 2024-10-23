@@ -1,0 +1,24 @@
+server:
+  port: 8011
+
+spring:
+  application:
+    name: aspro-service-engine
+  profiles:
+#    active: test
+    include: db
+
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-service-engine.yaml
+            group: aspro
+            refresh: true
+
+---
+spring:
+  profiles: test
