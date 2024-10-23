@@ -20,18 +20,15 @@ public class AsproResponse<T> {
     private String message;
     private T data;
 
-    private static final Integer SUCCESS_CODE = AsproEnums.SystemCode.SYSTEM_SUCCESS.getCode();
-    private static final Integer ERROR_CODE = AsproEnums.SystemCode.SYSTEM_ERROR.getCode();
-
-    private static final String SUCCESS_MSG = AsproEnums.SystemCode.SYSTEM_SUCCESS.getMessage();
-    private static final String ERROR_MSG = AsproEnums.SystemCode.SYSTEM_ERROR.getMessage();
-
-    public static final AsproResponse<Void> SUCCESS = AsproResponse.<Void>builder().code(SUCCESS_CODE).message(SUCCESS_MSG).build();
-
     public static <T> AsproResponse<T> success(T data) {
+        AsproEnums.SystemCode success = AsproEnums.SystemCode.SYSTEM_SUCCESS;
         return AsproResponse.<T>builder()
-                .code(SUCCESS_CODE).message(SUCCESS_MSG).data(data)
+                .code(success.getCode()).message(success.getMessage()).data(data)
                 .build();
+    }
+
+    public static AsproResponse<Void> success() {
+        return result(AsproEnums.SystemCode.SYSTEM_SUCCESS);
     }
 
     public static <T> AsproResponse<T> result(AsproEnums.SystemCode systemCode) {

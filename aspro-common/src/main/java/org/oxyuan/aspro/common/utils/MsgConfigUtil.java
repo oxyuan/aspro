@@ -17,9 +17,9 @@ import java.util.List;
 @UtilityClass
 public class MsgConfigUtil {
 
-    public static List<MsgEnums.Category> convert(String msgConfig) {
+    public List<MsgEnums.Category> convert(String msgConfig) {
         List<MsgEnums.Category> types = Lists.newArrayList();
-        if (StringUtils.isBlank(msgConfig) || !JSONUtil.isJson(msgConfig)) {
+        if (StringUtils.isBlank(msgConfig) || !JSONUtil.isTypeJSON(msgConfig)) {
             return types;
         }
         JSON.parseArray(msgConfig, MsgConfigDto.class)

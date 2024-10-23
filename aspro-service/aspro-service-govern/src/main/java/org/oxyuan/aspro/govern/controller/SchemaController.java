@@ -32,7 +32,7 @@ public class SchemaController {
     @PostMapping("/create")
     public AsproResponse<Void> createTable(@RequestParam("tableName") String tableName) {
         schemaService.createTable(tableName);
-        return AsproResponse.SUCCESS;
+        return AsproResponse.success();
     }
 
 }

@@ -40,7 +40,7 @@ public class MsgController {
     @DeleteMapping("/delete")
     public AsproResponse<Void> delete(@RequestParam(value = "id") Long id) {
         msgService.delete(id);
-        return AsproResponse.SUCCESS;
+        return AsproResponse.success();
     }
 
     @PutMapping("/update")

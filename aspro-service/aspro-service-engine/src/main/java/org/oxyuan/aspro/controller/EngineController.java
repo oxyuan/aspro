@@ -29,7 +29,7 @@ public class EngineController {
 
         emptyMsgStrategy.execute(Lists.newArrayList(msgRecord));
 
-        return AsproResponse.SUCCESS;
+        return AsproResponse.success();
     }
 
 }
