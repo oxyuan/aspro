@@ -14,7 +14,6 @@ import org.oxyuan.aspro.db.repository.MsgConfigRepository;
 import org.oxyuan.aspro.db.repository.MsgRecordRepository;
 import org.oxyuan.aspro.factory.MsgStrategyFactory;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -30,7 +29,6 @@ import java.util.stream.Collectors;
  * @since 2022/4/24 21:06
  */
 @Slf4j
-@Component
 public abstract class AbstractMsgStrategy implements MsgStrategy {
 
     @Resource
@@ -160,7 +158,7 @@ public abstract class AbstractMsgStrategy implements MsgStrategy {
     private List<String> convert(String content) {
         List<String> rs = Lists.newArrayList();
         MsgEnums.Category category = getType();
-        Optional.of(content)
+        Optional.ofNullable(content)
                 .map(JSON::parseObject)
                 .map(jo -> jo.getJSONArray(category.getFiled()))
                 .ifPresent(ja -> {

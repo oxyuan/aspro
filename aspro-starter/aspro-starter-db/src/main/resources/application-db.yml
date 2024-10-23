@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    schema: classpath:sql/sqlite.sql
+    url: jdbc:sqlite:aspro.sqlite
+    username:
+    password:
+    druid:
+      validation-query: select 1
+    initialization-mode: always
+    separator: $$$
+---
+spring:
+  profiles: prod
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: aspro-starter-db.yaml
+            group: aspro
+            refresh: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql//localhost:3306/aspro?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    schema: classpath:sql/mysql.sql
+    username: root
+    password: root
