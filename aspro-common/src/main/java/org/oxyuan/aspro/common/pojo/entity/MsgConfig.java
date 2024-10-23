@@ -20,21 +20,35 @@ import java.util.Date;
 @AllArgsConstructor
 public class MsgConfig implements Serializable {
 
-    /** 主键ID */
-    @TableId(value = "id",type= IdType.AUTO)
+    /**
+     * 主键ID
+     */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    /** 配置信息 */
+    /**
+     * 配置信息
+     */
     private String content;
 
-    /** 版本号 */
-    private Integer revision;
-    /** 创建时间 */
+    /**
+     * 版本号
+     */
+    private Integer version;
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    /** 创建者 */
+    /**
+     * 创建者
+     */
     private String creator;
-    /** 更新时间 */
+    /**
+     * 更新时间
+     */
     private Date updateTime;
-    /** 更新者 */
+    /**
+     * 更新者
+     */
     private String updater;
 
     private static final long serialVersionUID = 1L;
